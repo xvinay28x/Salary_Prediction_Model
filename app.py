@@ -5,13 +5,13 @@ import numpy as np
 model = pickle.load(open("model.pkl","rb"))
 app = Flask(__name__)
 
-@app.route("/")
+@app.route('/')
 def main():
     return render_template("home.html")
 
-@app.route("/predict", methods=["POST"])
+@app.route('/predict', methods=['POST'])
 def home():
-    user_age = request.form["age"]
+    user_age = request.form['age']
     arr = np.array([[user_age]],dtype="float64")
     pre = model.predict(arr)
     output = round(pre[0], 2)
